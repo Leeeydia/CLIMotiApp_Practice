@@ -54,19 +54,35 @@ public class MotivationController {
 
     public void delete() {
         int id = lastId = 1;
-        if  (motivations.size() == 1) {
+        if (motivations.size() == 1) {
             System.out.println("삭제할거 없음 xxxxx");
         }
 
-        if(motivations.get(motivations.size() - 1).getId() == id) {
+        if (motivations.get(motivations.size() - 1).getId() == id) {
             motivations.remove(motivations.size() - 1);
         }
 
-        motivations.remove(motivations.size() - 2);
+        motivations.remove(motivations.size() - 1);
 
 
         System.out.printf("%d번 motivation이 삭제되었습니다\n", id);
         lastId++;
+
+    }
+
+    public void update() {
+        int id = lastId = 1;
+        if (motivations.size() == 1) {
+            System.out.println("수정할 거 없음");
+        }
+        for (Motivation m : motivations) {
+            if (m.getId() == id) {
+                System.out.print("body :"); m.setBody(sc.nextLine());
+                System.out.print("source :"); m.setSource(sc.nextLine());
+
+                System.out.printf("%d번 motivation이 수정되었습니다\n", id);
+            }
+        }
 
     }
 }

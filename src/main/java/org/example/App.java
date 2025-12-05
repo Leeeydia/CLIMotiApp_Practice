@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.motivation.controller.MotivationController;
-import org.example.system.SystemController;
+import org.example.system.controller.SystemController;
 
 import java.util.Scanner;
 
@@ -37,6 +37,8 @@ public class App {
                 motivationController.list();
             } else if (cmd.equals("delete")) {
                 motivationController.delete();
+            } else if (cmd.equals("update")) {
+                motivationController.update();
             }
 
         }
