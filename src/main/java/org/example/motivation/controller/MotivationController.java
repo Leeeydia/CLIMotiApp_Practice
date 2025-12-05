@@ -52,33 +52,44 @@ public class MotivationController {
         System.out.println("=".repeat(40));
     }
 
-    public void delete() {
-        int id = lastId = 1;
-        if (motivations.size() == 1) {
-            System.out.println("삭제할거 없음 xxxxx");
+    public void delete(String cmd) {
+        String[] cmdBits = cmd.split(" ");
+        int id = Integer.parseInt(cmdBits[1]);
+
+        if (cmdBits.length == 1) {
+            System.out.println("명령어 확인하고 다시 써");
+            return;
         }
 
-        if (motivations.get(motivations.size() - 1).getId() == id) {
-            motivations.remove(motivations.size() - 1);
+        int foundIndex = -1;
+        for (int i = 0; i < motivations.size(); i++) {
+            if (motivations.get(i).getId() == id) {
+                foundIndex = i;
+                break;
+            }
         }
 
-        motivations.remove(motivations.size() - 1);
-
-
-        System.out.printf("%d번 motivation이 삭제되었습니다\n", id);
-        lastId++;
-
+        if (foundIndex == -1) {
+            System.out.println("해당 moti는 ArratList에 없어");
+            return;
+        }
+        motivations.remove(foundIndex);
+        System.out.println(id + "번 moti 삭제 됨");
     }
 
+    ///  번호 지정해서 수정하기 !!!!!!!!!!!
+    ///  수정할 거 없을 때
     public void update() {
         int id = lastId = 1;
-        if (motivations.size() == 1) {
+        if (motivations.size() == 0) {
             System.out.println("수정할 거 없음");
         }
         for (Motivation m : motivations) {
             if (m.getId() == id) {
-                System.out.print("body :"); m.setBody(sc.nextLine());
-                System.out.print("source :"); m.setSource(sc.nextLine());
+                System.out.print("body :");
+                m.setBody(sc.nextLine());
+                System.out.print("source :");
+                m.setSource(sc.nextLine());
 
                 System.out.printf("%d번 motivation이 수정되었습니다\n", id);
             }
