@@ -51,4 +51,22 @@ public class MotivationController {
         }
         System.out.println("=".repeat(40));
     }
+
+    public void delete() {
+        int id = lastId = 1;
+        if  (motivations.size() == 1) {
+            System.out.println("삭제할거 없음 xxxxx");
+        }
+
+        if(motivations.get(motivations.size() - 1).getId() == id) {
+            motivations.remove(motivations.size() - 1);
+        }
+
+        motivations.remove(motivations.size() - 2);
+
+
+        System.out.printf("%d번 motivation이 삭제되었습니다\n", id);
+        lastId++;
+
+    }
 }
